@@ -51,3 +51,34 @@ function FreelancerRows(freelancers) {
 
   return $tbody;
 }
+
+function AverageRate() {
+  const $p = document.createElement("p");
+  $p.textContent = `The average rate is $${averageRate.toFixed(2)}.`;
+  return $p;
+}
+
+function render() {
+  const $app = document.querySelector("#app");
+  $app.innerHTML = `
+    <h1>Freelancer Forum</h1>
+    <p id="AverageRate"></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Occupation</th>
+          <th>Rate</th>
+        </tr>
+      </thead>
+      <tbody id="FreelancerRows"></tbody>
+    </table>
+  `;
+
+  $app.querySelector("#AverageRate").replaceWith(AverageRate());
+  $app
+    .querySelector("#FreelancerRows")
+    .replaceWith(FreelancerRows(freelancers));
+}
+
+render();
