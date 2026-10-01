@@ -34,3 +34,20 @@ function getAvgRate(array) {
 }
 
 const averageRate = getAvgRate(freelancers);
+
+function FreelancerRow({ name, occupation, rate }) {
+  const $freelancer = document.createElement("tr");
+  $freelancer.innerHTML = `
+    <td>${name}</td>
+    <td>${occupation}</td>
+    <td>$${rate}</td>`;
+  return $freelancer;
+}
+
+function FreelancerRows(freelancers) {
+  const $tbody = document.createElement("tbody");
+  const $rows = freelancers.map(FreelancerRow);
+  $tbody.replaceChildren(...$rows);
+
+  return $tbody;
+}
